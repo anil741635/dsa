@@ -8,9 +8,7 @@ class Solution {
             {
                 sum+=nums[j];
                 if(sum==k)
-                {
                     count++;
-                }
             }
         }
         return count;
