@@ -9,7 +9,7 @@ class Solution {
             else{
                 count--;
             }
-            if((count==0 && i==')') || (count==1 && i=='(')) continue;
+            if(count==0 || (count==1 && i=='(')) continue;
             else{
                 sb.append(i);
             }
