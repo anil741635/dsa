@@ -17,11 +17,14 @@ class Solution {
             temp=temp.next;
         }
         if(count==n) return head.next;
-        ListNode slow=head;
-        for(int i=0;i<count-n-1;i++){
-            slow=slow.next;
+        temp=head;
+        int check=0;
+        int delete=count-n-1;
+        while(check!=delete){
+            check++;
+            temp=temp.next;
         }
-         slow.next=slow.next.next;
+        temp.next=temp.next.next;
         return head;
     }
 }
