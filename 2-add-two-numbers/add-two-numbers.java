@@ -27,8 +27,8 @@ class Solution {
                 sum=sum%10;
                 ptr.next=new ListNode(sum);
                 ptr=ptr.next;
-                if(carry==1) ptr.next=new ListNode(carry);
         }
+         if(carry==1) ptr.next=new ListNode(carry);
         return result.next;
     }
 }
