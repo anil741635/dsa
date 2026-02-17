@@ -3,7 +3,7 @@ class Solution {
         // code here
         int count=0;
         int high=n,low=d;
-        int ans=-1;
+        int ans=0;
         while(low<=high){
               int mid=low+(high-low)/2;
               int value=sumOfDigits(mid);
@@ -15,7 +15,7 @@ class Solution {
                     low=mid+1;
                 }  
          }
-         if(ans==-1) return 0;
+         if(ans==0) return 0;
       return n-ans+1;
     }
     public static int sumOfDigits(int d){
