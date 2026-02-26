@@ -14,29 +14,21 @@ class Solution {
         Set<Integer> visited=new HashSet<>();
         for(int i=0;i<V;i++){
             if(!visited.contains(i)){
-                if(bfsCheck(i,adj,visited)){
+                if(dfs(i,-1,visited,adj)){
                     return true;
                 }
             }
         }
         return false;
     }
-    public static boolean bfsCheck(int start,ArrayList<ArrayList<Integer>> adj,Set<Integer> visited){
-        Queue<int[]> queue=new LinkedList<>();
-        queue.offer(new int[] {start,-1});
-        visited.add(start);
-        while(!queue.isEmpty()){
-            int[] current=queue.poll();
-            int node=current[0];
-            int parent=current[1];
-            for(int neighbor:adj.get(node)){
-                if(!visited.contains(neighbor)){
-                    visited.add(neighbor);
-                    queue.offer(new int[] {neighbor,node});
-                }
-                else if(neighbor!=parent){
-                    return true;
-                }
+    public static boolean dfs(int node,int parent,Set<Integer> visited,ArrayList<ArrayList<Integer>> adj){
+        visited.add(node);
+        for(int neighbor:adj.get(node)){
+            if(!visited.contains(neighbor)){
+                if(dfs(neighbor,node,visited,adj)) return true;
+            }
+            else if(neighbor!=parent){
+                return true;
             }
         }
         return false;
