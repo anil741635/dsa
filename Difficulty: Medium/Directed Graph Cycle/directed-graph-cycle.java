@@ -10,23 +10,30 @@ class Solution {
             int u=edge[0];
             int v=edge[1];
             adj.get(u).add(v);
-            indegre[v]++;
         }
-        Queue<Integer> q=new LinkedList<>();
-        for(int i=0;i<V;i++){
-            if(indegre[i]==0){
-                q.add(i);
+      HashSet<Integer> visited=new HashSet<>();
+      HashSet<Integer> path=new HashSet<>();
+      for(int i=0;i<V;i++){
+          if(!visited.contains(i)){
+              if(dfs(i,adj,visited,path)){
+                  return true;
+              }
+          }
+      }
+      return false;
+    }
+    public static boolean dfs(int start,ArrayList<ArrayList<Integer>> adj,Set<Integer> visited,Set<Integer> path){
+        visited.add(start);
+        path.add(start);
+        for(int neighbor:adj.get(start)){
+            if(!visited.contains(neighbor)){
+                if(dfs(neighbor,adj,visited,path)){
+                    return true;
+                }
             }
+            else if(path.contains(neighbor)) return true;
         }
-        int count=0;
-        while(!q.isEmpty()){
-            int node=q.poll();
-            count++;
-            for(int neighbor:adj.get(node)){
-                indegre[neighbor]--;
-                if(indegre[neighbor]==0) q.add(neighbor);
-            }
-        }
-        return count!=V;
+        path.remove(start);
+        return false;
     }
 }
