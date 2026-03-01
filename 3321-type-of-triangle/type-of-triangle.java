@@ -1,11 +1,9 @@
 class Solution {
     public String triangleType(int[] nums) {
-        Arrays.sort(nums);
-        if(nums[0]+nums[1]<=nums[2]) return "none";
-        Set<Integer> set=new HashSet<>();
-        for(int i:nums) set.add(i);
-        if(set.size()==1) return "equilateral";
-        else if(set.size()==2) return "isosceles";
-        else return "scalene";
+       int first=nums[0],second=nums[1],third=nums[2];
+       if(first+second<=third || second+third<=first || first+third<=second) return "none";
+       if(first==second && second==third) return "equilateral";
+       else if(first==second || first==third || second==third) return "isosceles";
+       else return "scalene";
     }
 }
