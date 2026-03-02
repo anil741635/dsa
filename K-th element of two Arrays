@@ -1,0 +1,35 @@
+class Solution {
+    public int kthElement(int a[], int b[], int k) {
+        // code here
+       int l=0;
+       int r=0;
+       int count=0;
+       int n=a.length,m=b.length;
+       while(l<n && r<m){
+           int val;
+           if(a[l]<b[r]){
+               count++;
+               val=a[l];
+               l++;
+           }
+           else{
+               count++;
+               val=b[r];
+               r++;
+           }
+           if(count==k) return val;
+       }
+       while(l<n) {
+           count++;
+           if(count==k) return a[l];
+           l++;
+           
+       }
+       while(r<m) {
+           count++;
+           if(count==k) return b[r];
+           r++;
+       }
+       return -1;
+    }
+}
