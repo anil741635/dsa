@@ -1,0 +1,15 @@
+class Solution {
+    public int moreFrequent(List<Integer> arr, int x, int y) {
+        // code here
+        int xcount=0,ycount=0;
+        for(int i=0;i<arr.size();i++){
+            if(arr.get(i)==x) xcount++;
+            else if(arr.get(i)==y) ycount++;
+        }
+        if(xcount!=ycount){
+            if(xcount>ycount) return x;
+            return y;
+        }
+        else return x<y?x:y;
+    }
+}
