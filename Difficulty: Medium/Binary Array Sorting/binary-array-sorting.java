@@ -1,0 +1,17 @@
+class Solution {
+    public void binSort(int[] arr) {
+        // code here
+        int zeros=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==1) ;
+            else zeros++;
+        }
+        for(int i=0;i<arr.length;i++){
+            if(zeros>0){
+                arr[i]=0;
+                zeros--;
+            }
+            else arr[i]=1;
+        }
+    }
+}
