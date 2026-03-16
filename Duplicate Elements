@@ -1,0 +1,29 @@
+/* Helper class containing function SortedDuplicates
+containg arguments
+arr[]: the duplicated array
+n: size of the array
+*/
+class Geeks {
+    // print the elements which appear more than
+    // once in the array in sorted order
+    public static void SortedDuplicates(int arr[], int n) {
+        // Your code here
+        Arrays.sort(arr);
+        ArrayList<Integer> list=new ArrayList<>();
+        for(int i=0;i<n-1;i++){
+            if(arr[i]==arr[i+1]){
+                if(list.isEmpty() || list.get(list.size()-1)!=arr[i])
+                        list.add(arr[i]);
+            }
+        }
+        Collections.sort(list);
+        if(list.size()>0){
+            for(int i=0;i<list.size();i++){
+                System.out.print(list.get(i)+" ");
+            }
+        }
+        else{
+            System.out.print("-1");
+        }
+    }
+}
