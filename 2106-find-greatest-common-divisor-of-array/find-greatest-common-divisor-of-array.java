@@ -6,9 +6,10 @@ class Solution {
             min=Math.min(i,min);
             max=Math.max(i,max);
         }
-        for(int i=max;i>=1;i--){
-            if(min%i==0 && max%i==0) return i;
-        }
-        return -1;
+        return gcd(min,max);
+    }
+    public static int gcd(int a,int b){
+        if(b==0) return a;
+        return gcd(b,a%b);
     }
 }
