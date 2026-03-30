@@ -3,8 +3,8 @@ class Solution {
         // code here
         Arrays.sort(arr);
         int ans=1;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]==ans) ans++;
+        for(int i:arr){
+            if(i==ans) ans++;
             else{
                 break;
             }
