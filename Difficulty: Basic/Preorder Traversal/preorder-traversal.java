@@ -16,13 +16,20 @@ class Solution {
     public ArrayList<Integer> preOrder(Node root) {
         //  code here
         ArrayList<Integer> list=new ArrayList<>();
-        traverse(root,list);
+        Stack<Node> st=new Stack<>();
+        st.push(root);
+        while(!st.isEmpty()){
+            Node temp=st.pop();
+            list.add(temp.data);
+            if(temp.right!=null){
+                
+                st.push(temp.right);
+            } 
+            if(temp.left!=null){
+                st.push(temp.left);
+            } 
+        }
         return list;
     }
-    public static void traverse(Node root,ArrayList<Integer> list){
-        if(root==null) return;
-        list.add(root.data);
-        traverse(root.left,list);
-        traverse(root.right,list);
-    }
+    
 }
