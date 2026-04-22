@@ -1,0 +1,28 @@
+/*
+class Node {
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+*/
+
+class Solution {
+    public ArrayList<Integer> preOrder(Node root) {
+        //  code here
+        ArrayList<Integer> list=new ArrayList<>();
+        traverse(root,list);
+        return list;
+    }
+    public static void traverse(Node root,ArrayList<Integer> list){
+        if(root==null) return;
+        list.add(root.data);
+        traverse(root.left,list);
+        traverse(root.right,list);
+    }
+}
