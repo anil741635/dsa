@@ -11,15 +11,19 @@ class Node {
 class Solution {
     public ArrayList<Integer> inOrder(Node root) {
         // code here
+        Stack<Node> st=new Stack<>();
         ArrayList<Integer> list=new ArrayList<>();
-        
-        traverse(root,list);
+        Node node=root;
+        while(node!=null || !st.isEmpty()){
+            while(node!=null){
+                st.push(node);
+                node=node.left;
+            }
+            node=st.pop();
+            list.add(node.data);
+            node=node.right;
+        }
         return list;
     }
-    public static void traverse(Node root,ArrayList<Integer> list){
-        if(root==null) return ;
-        traverse(root.left,list);
-        list.add(root.data);
-        traverse(root.right,list);
-    }
+    
 }
