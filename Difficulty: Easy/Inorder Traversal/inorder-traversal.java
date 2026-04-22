@@ -13,13 +13,13 @@ class Solution {
         // code here
         ArrayList<Integer> list=new ArrayList<>();
         
-        return traverse(root,list);
+        traverse(root,list);
+        return list;
     }
-    public static ArrayList<Integer> traverse(Node root,ArrayList<Integer> list){
-        if(root==null) return list;
+    public static void traverse(Node root,ArrayList<Integer> list){
+        if(root==null) return ;
         traverse(root.left,list);
         list.add(root.data);
         traverse(root.right,list);
-        return list;
     }
 }
