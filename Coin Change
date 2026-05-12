@@ -1,0 +1,26 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(amount==0) return 0;
+        int dp[][]=new int[coins.length][amount+1];
+        for(int[] i:dp)
+            Arrays.fill(i,-1);
+       int ans= helper(coins,coins.length-1,amount,dp);
+       if(ans>=1000000) return -1;
+       else{
+        return ans;
+       }
+    }
+    public static int helper(int[] coins,int index,int amount,int dp[][]){
+        if(amount<0) return 1000000;
+        if(index==0){
+            if(amount%coins[0]==0) return amount/coins[0];
+            else{
+                return 1000000;
+            }
+        }
+        if(dp[index][amount]!=-1) return dp[index][amount];
+        int skip=helper(coins,index-1,amount,dp);
+        int take=1+helper(coins,index,amount-coins[index],dp);
+        return dp[index][amount]=Math.min(skip,take);
+    }
+}
