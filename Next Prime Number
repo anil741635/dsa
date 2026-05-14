@@ -1,0 +1,21 @@
+// User function Template for Java
+class Solution {
+    public static int nextPrime(int n) {
+
+        // code here to find next prime number
+        // return next prime number
+        int num=n+1;
+        while(true){
+            if(isPrime(num))
+                    return num;
+        num++;
+        }
+    }
+    public static boolean isPrime(int value){
+        if(value<=1) return false;
+        for(int i=2;i<=Math.sqrt(value);i++){
+            if(value%i==0)  return false;
+        }
+        return true;
+    }
+}
