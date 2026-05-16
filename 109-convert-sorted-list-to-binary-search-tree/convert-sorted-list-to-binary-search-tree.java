@@ -26,28 +26,17 @@
 class Solution {
     public TreeNode sortedListToBST(ListNode head) {
         if(head==null) return null;
-        ListNode temp=head;
-        int count=0;
-        while(temp!=null){
-            count++;
-            temp=temp.next;
-        }
-        int[] arr=new int[count];
-        temp=head;
-        int i=0;
-        while(temp!=null){
-            arr[i++]=temp.val;
-             temp=temp.next;
-        }
-        int start=0,end=arr.length-1;
-        return helper(arr,start,end);
-    }
-    public static TreeNode helper(int arr[],int start,int end){
-        if(start>end) return null;
-            int mid=start+(end-start)/2;
-            TreeNode root=new TreeNode(arr[mid]);
-            root.left=helper(arr,start,mid-1);
-            root.right=helper(arr,mid+1,end);
-            return root;
+       if(head.next==null) return new TreeNode(head.val);
+       ListNode prev=null,slow=head,fast=head;
+       while(fast!=null && fast.next!=null){
+        prev=slow;
+        slow=slow.next;
+        fast=fast.next.next;
+       }
+       prev.next=null;
+       TreeNode root=new TreeNode(slow.val);
+       root.left=sortedListToBST(head);
+       root.right=sortedListToBST(slow.next);
+       return root;
     }
 }
