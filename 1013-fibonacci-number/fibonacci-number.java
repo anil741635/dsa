@@ -1,12 +1,11 @@
 class Solution {
     public int fib(int n) {
-        if(n<=1) return n;
-        int first=0,second=1,result=0;
-        for(int i=2;i<=n;i++){
-            result=first+second;
-            first=second;
-            second=result;
-        }
-        return result;
+         if(n==0) return 0;
+        if(n==1) return 1;
+        int dp[]=new int[n+1];
+        dp[1]=1;
+        if(dp[n]!=0) return dp[n];
+        dp[n]=fib(n-1)+fib(n-2);
+        return dp[n];
     }
 }
