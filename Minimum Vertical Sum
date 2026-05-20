@@ -1,0 +1,20 @@
+class Solution {
+    public int minimum_vertical_sum(ArrayList<ArrayList<Integer>> arr, int n) {
+        // code here
+        int sum=Integer.MAX_VALUE;
+        int rows=arr.size();
+        int cols=0;
+        for(int i=0;i<rows;i++){
+            cols=Math.max(cols,arr.get(i).size());
+        }
+        for(int i=0;i<cols;i++){
+            int actualsum=0;
+            for(int j=0;j<rows;j++){
+                if(i<arr.get(j).size())
+                    actualsum+=arr.get(j).get(i);
+            }
+            sum=Math.min(sum,actualsum);
+        }
+        return sum;
+    }
+}
