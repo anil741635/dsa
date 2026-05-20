@@ -9,7 +9,7 @@ class Solution {
         if(index1==s1.length() || index2==s2.length()) return 0;
         if(dp[index1][index2]!=-1) return dp[index1][index2];
         if(s1.charAt(index1)==s2.charAt(index2)){
-            return 1+helper(s1,index1+1,s2,index2+1,dp);
+            return dp[index1][index2]=1+helper(s1,index1+1,s2,index2+1,dp);
         }
         int skip1=helper(s1,index1+1,s2,index2,dp);
         int skip2=helper(s1,index1,s2,index2+1,dp);
