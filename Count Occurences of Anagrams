@@ -1,0 +1,33 @@
+// User function Template for Java
+
+class Solution {
+
+    int search(String pat, String txt) {
+        // code here
+        int count=0;
+        int[] mapa=new int[256];
+        for(char ch:pat.toCharArray())
+            mapa[ch]++;
+        int[] mapb=new int[256];
+        int left=0;
+        for(int right=0;right<txt.length();right++){
+            mapb[txt.charAt(right)]++;
+            if(right-left+1>pat.length()){
+                mapb[txt.charAt(left)]--;
+                left++;
+            }
+            if(right-left+1==pat.length()){
+                if(compare(mapa,mapb)){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    public static boolean compare(int[] mapa,int[] mapb){
+        for(int i=0;i<256;i++){
+            if(mapa[i]!=mapb[i]) return false;
+        }
+        return true;
+    }
+}
