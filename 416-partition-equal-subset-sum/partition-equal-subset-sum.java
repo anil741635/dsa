@@ -3,19 +3,16 @@ class Solution {
         int total=0;
         for(int i:nums) total+=i;
         if(total%2!=0) return false;
-        Boolean dp[][]=new Boolean[nums.length+1][(total/2)+1];
-       return helper(nums,0,total/2,dp);
-    }
-    public static boolean helper(int nums[],int index,int sum,Boolean[][] dp){
-        if(sum==0) return true;
-        if(index==nums.length) return false;
-        if(dp[index][sum]!=null) return dp[index][sum];
-        boolean pick=false;
-        boolean notpick=false;
-        if(nums[index]<=sum) {
-            pick=helper(nums,index+1,sum-nums[index],dp);
+        boolean dp[][]=new boolean[nums.length+1][(total/2)+1];
+        for(int i=0;i<nums.length;i++){
+            dp[i][0]=true;
         }
-         notpick=helper(nums,index+1,sum,dp);
-        return dp[index][sum]=pick || notpick;
+        for(int i=1;i<=nums.length;i++){
+            for(int j=1;j<=total/2;j++){
+                dp[i][j]=dp[i-1][j];
+                if(nums[i-1]<=j) dp[i][j]=dp[i][j] || dp[i-1][j-nums[i-1]];
+            }
+        }
+        return dp[nums.length][total/2];
     }
 }
