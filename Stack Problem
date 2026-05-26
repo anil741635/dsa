@@ -1,0 +1,22 @@
+// User function Template for Java
+
+class Solution{
+    static Stack<Integer> deleteMid(int n, Stack<Integer> st)
+    {
+        // code here
+        int middle=n/2;
+        Stack<Integer> st1=new Stack<>();
+        while(!st.isEmpty()){
+            if(middle==0){
+                st.pop();
+                middle--;
+                continue;
+            }
+            st1.push(st.pop());
+            middle--;
+        }
+        Stack<Integer> ans=new Stack<>();
+        while(!st1.isEmpty()) ans.push(st1.pop());
+        return ans;
+    }
+}
