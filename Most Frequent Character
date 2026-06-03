@@ -1,0 +1,18 @@
+class Solution {
+    public char getMaxOccuringChar(String s) {
+        // code here
+        int arr[]=new int[26];
+        for(char ch:s.toCharArray()){
+            arr[ch-'a']++;
+        }
+        char max=' ';
+        int freq=0;
+        for(int i=0;i<26;i++){
+            if(freq<arr[i]) {
+                freq=arr[i];
+                max=(char) ('a'+i);
+            }
+        }
+        return max;
+    }
+}
