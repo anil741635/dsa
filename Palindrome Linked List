@@ -1,0 +1,37 @@
+/*
+class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}*/
+
+class Solution {
+    public boolean isPalindrome(Node head) {
+        // code here
+        Node slow=head,fast=head,temp=head;
+        while(fast.next!=null && fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        
+        Node curr=slow.next;
+        slow.next=null;
+        Node prev=null;
+        while(curr!=null){
+            Node next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        while(prev!=null && temp!=null){
+            if(temp.data!=prev.data) return false;
+            prev=prev.next;
+            temp=temp.next;
+        }
+        return true;
+    }
+}
