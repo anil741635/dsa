@@ -1,0 +1,31 @@
+/* Structure of linked list Node
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+*/
+class Solution {
+    int getKthFromLast(Node head, int k) {
+        // code here
+        int count=0;
+        Node temp=head;
+        while(temp!=null){
+            count++;
+            temp=temp.next;
+        }
+        if(count<k) return -1;
+        int len=count-k;
+        temp=head;
+        while(len>0){
+            temp=temp.next;
+            len--;
+        }
+        return temp.data;
+    }
+}
