@@ -5,8 +5,10 @@ class Solution {
         Queue<Integer> q=new LinkedList<>();
         Arrays.fill(color,-1);
        for(int i=0;i<n;i++){
-        if(color[i]==-1) color[i]=0;
-        q.add(i);
+        if(color[i]==-1){
+            color[i]=0;
+            q.add(i);
+        }
             while(!q.isEmpty()){
                 int value=q.poll();
                 for(int neighbor:graph[value]){
