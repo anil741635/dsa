@@ -14,9 +14,8 @@ class Solution {
         if(index==nums.length) return false;
         if(sum==0) return true;
         if(dp[index][sum]!=null) return dp[index][sum];
-       boolean skip=false;
-       skip=helper(nums,sum,index+1,dp);
-       boolean take= false;
+       boolean skip=helper(nums,sum,index+1,dp);
+       boolean take=false;
        if(nums[index]<=sum){
             take=helper(nums,sum-nums[index],index+1,dp);
        }
