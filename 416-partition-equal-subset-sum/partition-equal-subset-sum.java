@@ -7,18 +7,17 @@ class Solution {
         }
         if(total%2!=0) return false;
         int sum=total/2;
-        Boolean[][] dp=new Boolean[nums.length+1][sum+1];
-        return helper(nums,sum,0,dp);
-    }
-    public static boolean helper(int[] nums,int sum,int index,Boolean[][] dp){
-        if(index==nums.length) return false;
-        if(sum==0) return true;
-        if(dp[index][sum]!=null) return dp[index][sum];
-       boolean skip=helper(nums,sum,index+1,dp);
-       boolean take=false;
-       if(nums[index]<=sum){
-            take=helper(nums,sum-nums[index],index+1,dp);
+        boolean[][] dp=new boolean[nums.length+1][sum+1];
+        for(int i=0;i<=nums.length;i++) dp[i][0]=true;
+         for(int j=0;j<=sum;j++) dp[0][j]=false;
+       for(int i=1;i<=n;i++){
+        for(int j=1;j<=sum;j++){
+            if(nums[i-1]<=j){
+                dp[i][j]=dp[i-1][j] || dp[i-1][j-nums[i-1]];
+            }
+            else dp[i][j]=dp[i-1][j];
+        }
        }
-       return dp[index][sum]=skip || take;
+       return dp[n][sum];
     }
 }
