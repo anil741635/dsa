@@ -1,0 +1,13 @@
+class Solution {
+    public int[] twoRepeated(int[] arr) {
+        // code here
+        int[] res=new int[2];
+        int index=0;
+       Map<Integer,Integer> map=new HashMap<>();
+        for(int i: arr){
+           map.put(i,map.getOrDefault(i,0)+1);
+           if(map.get(i)==2) res[index++]=i;
+        }
+    return res;
+    }
+}
