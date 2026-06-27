@@ -1,13 +1,24 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        int slow=0,fast=1;
         if(nums.length==1) return nums[0];
-        while(fast<nums.length){
-            if(nums[slow]!=nums[fast]) return nums[slow];
-            slow+=2;
-            fast+=2;
-            if(fast>=nums.length) return nums[slow];
-        }
-        return 0;
+        if(nums[0]!=nums[1]) return nums[0];
+        if(nums[nums.length-1]!=nums[nums.length-2]) return nums[nums.length-1];
+       int left=1,right=nums.length-2;
+       while(left<right){
+            int mid=left+(right-left)/2;
+            if(mid%2==1){
+                if(nums[mid]==nums[mid-1]){
+                    left=mid+1;
+                }
+                else right=mid-1;
+            }
+            else{
+                if(nums[mid]==nums[mid+1]){
+                    left=mid+2;
+                }
+                else right=mid;
+            }
+       }
+       return nums[left];
     }
 }
