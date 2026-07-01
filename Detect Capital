@@ -1,0 +1,13 @@
+ class Solution {
+    public boolean detectCapitalUse(String word) {
+        if(word.equals(word.toUpperCase())) return true;
+        if(word.equals(word.toLowerCase())) return true;
+        if((int)word.charAt(0)<=90){
+            for(int i=1;i<word.length();i++){
+                if((int)word.charAt(i)<=90) return false;
+            }
+        }
+        else return false;
+        return true;
+    }
+}
