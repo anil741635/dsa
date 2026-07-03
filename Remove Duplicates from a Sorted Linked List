@@ -1,0 +1,31 @@
+/* Structure of linked list Node
+class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+      data = d;
+      next = null;
+    }
+}
+*/
+class Solution {
+    Node removeDuplicates(Node head) {
+        // code here
+        if(head==null) return null;
+        Node temp=head;
+        Node nxt=head.next;
+        //Node prev=head;
+        while(nxt!=null){
+            while(nxt!=null && nxt.data==temp.data){
+               // prev=prev.next;
+                nxt=nxt.next;
+            }
+            temp.next=nxt;
+            temp=nxt;
+            if(nxt!=null)
+                nxt=nxt.next;
+        }
+        return head;
+    }
+}
