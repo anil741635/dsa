@@ -1,0 +1,20 @@
+class Solution {
+    public int dominantIndex(int[] nums) {
+        int maxi=Integer.MIN_VALUE;
+        int ind=-1;
+        for(int i=0;i<nums.length;i++){
+            if(maxi<nums[i]){
+                maxi=nums[i];
+                ind=i;
+            }
+        }
+        for(int i:nums){
+            if(maxi!=i){
+                if((i+i)>maxi){
+                    return -1;
+                }
+            }
+        }
+        return ind;
+    }
+}
