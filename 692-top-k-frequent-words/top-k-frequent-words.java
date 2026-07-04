@@ -1,0 +1,20 @@
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        List<String> list=new ArrayList<>();
+        Map<String,Integer> map=new HashMap<>();
+        for(int i=0;i<words.length;i++){
+            map.put(words[i],map.getOrDefault(words[i],0)+1);
+        }
+      List<Map.Entry<String,Integer>> temp=new ArrayList<>(map.entrySet());
+      temp.sort((a,b)-> {
+        if(a.getValue().equals(b.getValue())){
+            return a.getKey().compareTo(b.getKey());
+        }
+        return b.getValue()-a.getValue();
+      });
+      for(int i=0;i<k;i++){
+        list.add(temp.get(i).getKey());
+      }
+      return list;
+    }
+}
