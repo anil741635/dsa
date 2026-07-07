@@ -1,0 +1,17 @@
+class Solution {
+    public int[] singleNumber(int[] nums) {
+        Set<Integer> set=new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            if(!set.contains(nums[i])){
+                set.add(nums[i]);
+            }
+            else set.remove(nums[i]);
+        }
+        int arr[]=new int[set.size()];
+        int left=0;
+        for(int i:set){
+            arr[left++]=i;
+        }
+    return arr;
+    }
+}
