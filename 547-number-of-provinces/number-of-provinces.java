@@ -1,25 +1,21 @@
 class Solution {
     public int findCircleNum(int[][] isConnected) {
-        int n=isConnected.length;
-        int count=0;
-        Set<Integer> set=new HashSet<>();
-        Queue<Integer> q=new LinkedList<>();
-        for(int i=0;i<n;i++){
-            if(!set.contains(i)){
-                q.add(i);
-                set.add(i);
+       int count=0;
+       Set<Integer> set=new HashSet<>();
+       for(int i=0;i<isConnected.length;i++){
+        if(!set.contains(i)){
+         dfs(isConnected,i,set);
                 count++;
-                while(!q.isEmpty()){
-                    int value=q.poll();
-                    for(int neighbor=0;neighbor<n;neighbor++){
-                        if(isConnected[value][neighbor]==1 && !set.contains(neighbor)){
-                            q.add(neighbor);
-                            set.add(neighbor);
-                        }
-                    }
-                }
-            }
         }
-        return count;
+       } 
+       return count;
+    }
+    public static void dfs(int[][] graph,int node,Set<Integer> set){
+       set.add(node);
+       for(int i=0;i<graph.length;i++){
+        if(graph[node][i]==1 && !set.contains(i)){
+            dfs(graph,i,set);
+        }
+       }
     }
 }
