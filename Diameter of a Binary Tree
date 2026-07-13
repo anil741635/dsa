@@ -1,0 +1,28 @@
+/*
+Definition for Node
+class Node {
+    int data;
+    Node left;
+    Node right;
+    Node(int data) {
+        this.data = data;
+        left = right = null;
+    }
+} */
+
+class Solution {
+    public static int maxi=0;
+    public int diameter(Node root) {
+        // code here
+        maxi=0;
+        check(root);
+       return maxi;
+    }
+    public static int check(Node root){
+        if(root==null) return 0;
+        int left=check(root.left);
+        int right=check(root.right);
+        maxi=Math.max(maxi,left+right);
+        return 1+Math.max(left,right);
+    }
+}
