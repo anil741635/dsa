@@ -1,0 +1,20 @@
+class Solution {
+    public void mergeArrays(int a[], int b[]) {
+        // code here
+        int com[]=new int[a.length+b.length];
+        for(int i=0;i<a.length;i++){
+            com[i]=a[i];
+        }
+        int ind=0;
+        for(int i=a.length;i<com.length;i++){
+            com[i]=b[ind++];
+        }
+        Arrays.sort(com);
+        for(int i=0;i<a.length;i++){
+            a[i]=com[i];
+        }
+        for(int i=0;i<b.length;i++){
+            b[i]=com[i+a.length];
+        }
+    }
+}
