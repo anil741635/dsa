@@ -1,0 +1,27 @@
+/* Definition for Node
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int val) {
+        data = val;
+        left = right = null;
+    }
+}
+*/
+
+class Solution {
+     public boolean isSumTree(Node node) {
+        // code here
+        return check(node)!=-1;
+    }
+    public static int  check(Node root){
+        if(root==null) return 0;
+        if(root.left==null && root.right==null) return root.data;
+        int left=check(root.left);
+        int right=check(root.right);
+        if(left==-1 || right==-1) return -1;
+        if(root.data!=left+right) return -1;
+        return root.data+left+right;
+    }
+}
