@@ -1,0 +1,32 @@
+/*
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int d)
+    {
+        this.data = d;
+        this.next = null;
+    }
+}
+*/
+class Solution {
+    Node deleteNode(Node head, int x) {
+        // code here
+        if(x==1) return head.next;
+        int count=0;
+        Node temp=head;
+        while(temp!=null){
+            count++;
+            if(count+1==x){
+                if(temp.next.next==null) temp.next=null;
+                else {
+                    temp.next=temp.next.next;
+                }
+            }
+            temp=temp.next;
+        }
+        return head;
+    }
+}
