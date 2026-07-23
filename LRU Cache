@@ -1,0 +1,66 @@
+class Node{
+    Node next,prev;
+    int key,value;
+    Node(int key,int value){
+        this.key=key;
+        this.value=value;
+    }
+}
+class LRUCache {
+    static int size;
+    static Map<Integer,Node> map;
+    static Node head;
+     static Node tail;
+    LRUCache(int cap) {
+        // code here
+        size=cap;
+        map=new HashMap<>();
+        head=new Node(0,0);
+        tail=new Node(0,0);
+        head.next=tail;
+        tail.prev=head;
+    }
+    public static void addNode(Node node){
+        Node temp=head.next;
+        head.next=node;
+        node.prev=head;
+        
+        node.next=temp;
+        temp.prev=node;
+    }
+    public static void deleteNode(Node node){
+        node.prev.next=node.next;
+        node.next.prev=node.prev;
+    }
+    public static int get(int key) {
+        //  code here
+        if(!map.containsKey(key)){
+            return -1;
+        }
+        Node node=map.get(key);
+        deleteNode(node);
+        addNode(node);
+        return node.value;
+    }
+
+        
+    public static void put(int key, int value) {
+        //  code here
+        if(map.containsKey(key)){
+            Node node=map.get(key);
+            node.value=value;
+            deleteNode(node);
+            addNode(node);
+        }
+        else{
+            if(map.size()==size){
+                Node delete=tail.prev;
+                deleteNode(delete);
+                map.remove(delete.key);
+            }
+            Node newNode=new Node(key,value);
+            addNode(newNode);
+            map.put(key,newNode);
+        }
+    }
+}
