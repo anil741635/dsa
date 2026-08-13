@@ -1,0 +1,23 @@
+/* Structure of a Node
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}*/
+class Solution {
+    public boolean areIdentical(Node head1, Node head2) {
+        // code here
+        Node temp=head1,temp1=head2;
+        while(temp!=null || temp1!=null){
+            if(temp==null || temp1==null) return false;
+            if(temp.data!=temp1.data) return false;
+            temp=temp.next;
+            temp1=temp1.next;
+        }
+        return true;
+    }
+}
