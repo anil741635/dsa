@@ -1,0 +1,16 @@
+class Solution {
+    public ArrayList<Integer> findMajority(int[] arr) {
+        // code here
+        int n=arr.length;
+        ArrayList<Integer> list=new ArrayList<>();
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int i:arr){
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        for(int num:map.keySet()){
+            if(map.get(num)>n/3) list.add(num);
+        }
+        Collections.sort(list);
+        return list;
+    }
+}
