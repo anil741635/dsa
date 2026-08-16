@@ -1,0 +1,11 @@
+class Solution {
+    public int countDivisibles(int a, int b, int m) {
+        // code here
+        int count=0;
+        while(a<=b){
+            if(a%m==0) count++;
+            a++;
+        }
+        return count;
+    }
+}
