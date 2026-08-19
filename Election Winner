@@ -1,0 +1,26 @@
+import java.util.*;
+
+class Solution {
+    public ArrayList<String> winner(String[] arr) {
+        // code here
+        Map<String,Integer> map=new HashMap<>();
+        ArrayList<String> list=new ArrayList<>();
+        for(String i:arr) map.put(i,map.getOrDefault(i,0)+1);
+        int max=0;
+        for(String i:map.keySet()){
+            if(max<map.get(i)){
+                list.clear();
+                list.add(i);
+                max=map.get(i);
+            }
+            else if(max==map.get(i)){ list.add(i);
+                
+            }
+        }
+        Collections.sort(list);
+        ArrayList<String> ans=new ArrayList<>();
+        ans.add(list.get(0));
+        ans.add(String.valueOf(max));
+        return ans;
+    }
+}
