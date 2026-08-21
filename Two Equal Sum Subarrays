@@ -1,0 +1,16 @@
+class Solution {
+    public boolean canSplit(int arr[]) {
+        // code here
+        int totalSum=0;
+        for(int i:arr){
+            totalSum+=i;
+        }
+        int presum=0;
+        for(int i:arr){
+            presum+=i;
+           int suffix=totalSum-presum;
+           if(suffix==presum) return true;
+        }
+        return false;
+    }
+}
