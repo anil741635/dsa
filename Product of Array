@@ -1,0 +1,10 @@
+class Solution {
+    public long product(long arr[]) {
+        // code here
+        long ans=1;
+        for(long i:arr){
+            ans=(ans*i)%1000000007;
+        }
+        return ans;
+    }
+}
