@@ -1,0 +1,22 @@
+class Solution {
+    public String reverseStr(String s, int k) {
+      char ch[]=s.toCharArray();
+      int start=0;
+      int n=ch.length;
+      while(start<n){
+            int end=Math.min(n-1,start+k-1);
+            reverse(ch,start,end);
+            start+=2*k;
+      }
+      return new String(ch);
+    }
+    public static void reverse(char ch[],int l,int r){
+        while(l<r){
+            char temp=ch[l];
+            ch[l]=ch[r];
+            ch[r]=temp;
+            l++;
+            r--;
+        }
+    }
+}
