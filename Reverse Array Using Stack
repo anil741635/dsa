@@ -1,0 +1,13 @@
+class Solution {
+    public void reverseArray(int[] arr) {
+        // code here
+        Stack<Integer> st=new Stack<>();
+        for(int i:arr){
+            st.push(i);
+        }
+        int i=0;
+        while(!st.isEmpty()){
+            arr[i++]=st.pop();
+        }
+    }
+}
