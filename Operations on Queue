@@ -1,0 +1,44 @@
+class myQueue {
+    Queue<Integer> q;
+    public myQueue() {
+        // initialize your queue
+        q=new LinkedList<>();
+        
+    }
+
+    public void enqueue(int x) {
+        // insert x into queue
+        q.add(x);
+    }
+
+    public void dequeue() {
+        // remove front element from queue
+        q.poll();
+    }
+
+    public int getFront() {
+        // return the front element of the queue
+         if(q.isEmpty()) return -1;
+        return q.peek();
+    }
+
+    public int getRear() {
+        // return the rear element of the queue
+        if(q.isEmpty()) return -1;
+        int rear=0;
+        for(int i:q){
+            rear=i;
+        }
+        return rear;
+    }
+
+    public boolean isEmpty() {
+        // check whether the queue is empty
+        return q.isEmpty();
+    }
+
+    public int size() {
+        // return the size of the queue
+        return q.size();
+    }
+}
