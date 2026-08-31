@@ -1,0 +1,23 @@
+class Solution {
+    public void enqueue(Queue<Integer> q, int x) {
+        // code here
+        q.add(x);
+    }
+
+    public void dequeue(Queue<Integer> q) {
+        q.poll();
+        // code here
+    }
+
+        
+    public int front(Queue<Integer> q) {
+        // code here
+        return q.peek();
+    }
+        
+
+    public boolean find(Queue<Integer> q, int x) {
+        // code here
+        return q.contains(x);
+    }
+}
