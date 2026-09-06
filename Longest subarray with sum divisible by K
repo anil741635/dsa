@@ -1,0 +1,21 @@
+class Solution {
+    public int longestSubarrayDivK(int[] arr, int k) {
+        // code here
+        int maxlen=0;
+       long presum=0;
+       Map<Long,Integer> map=new HashMap<>();
+       map.put(0L,-1);
+       for(int i=0;i<arr.length;i++){
+           presum+=arr[i];
+           long rem=presum%k;
+           if(rem<0){
+               rem+=k;
+           }
+           if(map.containsKey(rem)){
+               maxlen=Math.max(maxlen,i-map.get(rem));
+           }
+           else map.put(rem,i);
+       }
+       return maxlen;
+    }
+}
