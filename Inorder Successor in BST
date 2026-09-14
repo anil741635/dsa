@@ -1,0 +1,29 @@
+/*
+Definition for Node
+class Node {
+    public int data;
+    public Node left;
+    public Node right;
+
+    public Node(int val) {
+        data = val;
+        left = right = null;
+    }
+};
+*/
+
+class Solution {
+    public int inOrderSuccessor(Node root, Node k) {
+        // code here
+        Node successor=null;
+        while(root!=null){
+            if(root.data>k.data){
+                successor=root;
+                root=root.left;
+            }
+            else root=root.right;
+        }
+        if(successor==null) return -1;
+        return successor.data;
+    }
+}
