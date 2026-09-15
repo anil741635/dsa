@@ -1,0 +1,15 @@
+class Solution {
+    public void shuffleArray(int[] arr) {
+        // code here
+        int start=0,mid=arr.length/2;
+        int s=0;
+        int ar[]=new int[arr.length];
+        while(mid<arr.length){
+            ar[s++]=arr[start++];
+            ar[s++]=arr[mid++];
+        }
+        for(int i=0;i<arr.length;i++){
+            arr[i]=ar[i];
+        }
+    }
+}
