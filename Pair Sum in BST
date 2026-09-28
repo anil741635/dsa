@@ -1,0 +1,29 @@
+/* Binary Tree Node Structure
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int d) {
+        data = d;
+        left = right = null;
+    }
+}
+*/
+class Solution {
+    boolean findTarget(Node root, int target) {
+        // Write your code here
+        Set<Integer> set=new HashSet<>();
+       return inorder(root,set,target);
+        
+    }
+    public static boolean inorder(Node temp,Set<Integer> set,int target){
+        if(temp==null) return false;
+        if(inorder(temp.left,set,target)){
+            return true;
+        }
+        if(set.contains(target-temp.data)) return true;
+        set.add(temp.data);
+        if(inorder(temp.right,set,target)) return true;
+        return false;
+    }
+}
