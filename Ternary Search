@@ -1,0 +1,21 @@
+class Solution {
+    public boolean ternarySearch(int[] arr, int x) {
+        // code here
+        int low=0,right=arr.length-1;
+        while(low<=right){
+            int mid=low+(right-low)/2;
+            if(arr[mid]==x) return true;
+            if(arr[low]<=arr[mid]){
+                if(arr[low]<=x && x<=arr[mid]){
+                    right=mid-1;
+                }
+                else low=low+1;
+            }
+            else if(arr[mid]<=arr[right]){
+                if(arr[mid]<=x && x<=arr[right]) low=mid+1;
+                else mid=mid+1;
+            }
+        }
+        return false;
+    }
+}
