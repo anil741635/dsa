@@ -1,0 +1,32 @@
+/* Structure of a Binary Search Tree node
+class Node {
+  public int data;
+  public Node left;
+  public Node right;
+
+  public Node(int val) {
+      data = val;
+      left = right = null;
+  }
+};*/
+
+class Solution {
+    public ArrayList<Integer> findCommon(Node r1, Node r2) {
+        // code here
+        ArrayList<Integer> ans=new ArrayList<>();
+        HashMap<Integer,Integer> map=new HashMap<>();
+        inorder(r1,map);
+        inorder(r2,map);
+        for(int i:map.keySet()){
+            if(map.get(i)==2) ans.add(i);
+        }
+        Collections.sort(ans);
+        return ans;
+    }
+    public static void inorder(Node root,HashMap<Integer,Integer> map){
+        if(root==null) return;
+        inorder(root.left,map);
+       map.put(root.data,map.getOrDefault(root.data,0)+1);
+        inorder(root.right,map);
+    }
+}
