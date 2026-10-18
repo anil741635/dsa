@@ -1,0 +1,22 @@
+class Solution {
+    public String firstNonRepeating(String s) {
+        // code here
+       // aabc
+       StringBuilder sb=new StringBuilder();
+       Queue<Character> q=new LinkedList<>();
+       int[] freq=new int[26];
+       for(int i=0;i<s.length();i++){
+           char ch=s.charAt(i);
+           freq[ch-'a']++;
+           q.add(ch);
+           while(!q.isEmpty() && freq[q.peek()-'a']>1){
+               q.poll();
+           }
+           if(!q.isEmpty()){
+               sb.append(q.peek());
+           }
+           else sb.append("#");
+       }
+       return sb.toString();
+    }
+}
