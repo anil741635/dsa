@@ -1,0 +1,25 @@
+class Solution {
+    public double medianOf2(int a[], int b[]) {
+        // Code Here
+        int left=0,right=0;
+        int ans[]=new int[a.length+b.length];
+        int ind=0;
+        while(left<a.length && right<b.length){
+            if(a[left]<b[right]){
+                ans[ind++]=a[left++];
+            }
+            else ans[ind++]=b[right++];
+        }
+        while(left<a.length){
+            ans[ind++]=a[left++];
+        }
+        while(right<b.length){
+            ans[ind++]=b[right++];
+        }
+        int n=ans.length;
+        if(n%2==1){
+            return ans[n/2];
+        }
+        return (double)(ans[(n/2)-1]+ans[n/2])/2;
+    }
+}
