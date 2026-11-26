@@ -1,0 +1,23 @@
+class Solution {
+    ArrayList<Integer> addOne(int[] arr) {
+        // code here
+        ArrayList<Integer> list=new ArrayList<>();
+        int carry=1;
+        int n=arr.length;
+        for(int i=n-1;i>=0;i--){
+            if(arr[i]+carry<=9){
+                list.add(arr[i]+carry);
+                carry=0;
+            }
+            else{
+                list.add(0);
+                carry=1;
+            }
+        }
+        if(carry==1){
+            list.add(1);
+        }
+        Collections.reverse(list);
+        return list;
+    }
+}
